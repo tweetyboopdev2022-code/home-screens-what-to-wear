@@ -1,0 +1,42 @@
+{
+  "id": "what-to-wear",
+  "name": "What to Wear",
+  "version": "1.2.0",
+  "description": "One school-day plan: what to put on in the morning and what goes in the backpack for later: winter gear, rain gear, sweater, sunscreen — from today's forecast. Switches to tomorrow in the evening.",
+  "author": "Tanya",
+  "license": "MIT",
+  "minAppVersion": "1.7.1",
+  "moduleType": "what-to-wear",
+  "category": "Weather & Environment",
+  "icon": "Thermometer",
+  "defaultConfig": {
+    "title": "Ready for school",
+    "morningFrom": 7,
+    "morningTo": 9,
+    "afternoonFrom": 10,
+    "afternoonTo": 16,
+    "switchToTomorrowAt": 17,
+    "coldBias": 2,
+    "accentColor": "#db2777"
+  },
+  "defaultSize": { "w": 1000, "h": 600 },
+  "defaultStyle": { "fontSize": 28, "padding": 28, "borderRadius": 28 },
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "title": { "type": "string", "title": "Title", "ui:widget": "text", "ui:group": "Content" },
+      "morningFrom": { "type": "number", "title": "Leave for school from (hour)", "minimum": 5, "maximum": 11, "ui:widget": "slider", "ui:step": 1, "ui:group": "Times" },
+      "morningTo": { "type": "number", "title": "Leave for school until (hour)", "minimum": 6, "maximum": 12, "ui:widget": "slider", "ui:step": 1, "ui:group": "Times" },
+      "afternoonFrom": { "type": "number", "title": "Rest of school day from (hour)", "minimum": 9, "maximum": 17, "ui:widget": "slider", "ui:step": 1, "ui:group": "Times" },
+      "afternoonTo": { "type": "number", "title": "School day ends (hour)", "minimum": 12, "maximum": 20, "ui:widget": "slider", "ui:step": 1, "ui:group": "Times" },
+      "switchToTomorrowAt": { "type": "number", "title": "Show tomorrow from (hour)", "description": "After this hour it shows tomorrow's outfit so clothes can be laid out the night before.", "minimum": 12, "maximum": 24, "ui:widget": "slider", "ui:step": 1, "ui:group": "Times" },
+      "coldBias": { "type": "number", "title": "Feels colder by (°C)", "description": "Kids and people who run cold: dress warmer than the forecast says.", "minimum": -3, "maximum": 6, "ui:widget": "slider", "ui:step": 1, "ui:group": "Look" },
+      "accentColor": { "type": "string", "title": "Accent colour", "ui:widget": "color", "ui:group": "Look" }
+    }
+  },
+  "exports": { "component": "default" },
+  "dataRequirements": ["location"],
+  "prefetchUrl": null,
+  "allowedDomains": ["api.open-meteo.com"],
+  "permissions": ["network"]
+}
