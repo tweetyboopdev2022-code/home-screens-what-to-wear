@@ -94,7 +94,7 @@ export default function WhatToWear(props: Props) {
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.6em' }}>
         <div>
           <div style={{ fontSize: '0.62em', fontWeight: 600, letterSpacing: '0.07em', textTransform: 'uppercase', color: accent }}>{tomorrow ? 'Tomorrow' : 'Today'} · {dayOff ? (dow === 0 || dow === 6 ? 'weekend' : 'no school') : 'school day'}</div>
-          <div style={{ fontSize: '1.25em', fontWeight: 600, lineHeight: 1.1 }}>{title}</div>
+          <div style={{ fontSize: '1.25em', fontWeight: 600, lineHeight: 1.1 }}>{dayOff ? String(config.dayOffTitle || 'Ready to play') : title}</div>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.4em' }}>
           <span style={{ fontSize: '2.1em', lineHeight: 1 }}>{s.icon}</span>
@@ -119,7 +119,7 @@ export default function WhatToWear(props: Props) {
         </div>
       </div>
 
-      {plan.note && <div style={{ fontSize: '0.75em', fontWeight: 500, padding: '0.35em 0.6em', borderRadius: '0.6em', background: 'rgba(127,127,127,0.10)' }}>💡 {plan.note}</div>}
+      {plan.note && !(dayOff && /backpack/i.test(plan.note)) && <div style={{ fontSize: '0.75em', fontWeight: 500, padding: '0.35em 0.6em', borderRadius: '0.6em', background: 'rgba(127,127,127,0.10)' }}>💡 {plan.note}</div>}
 
       <div style={{ display: 'grid', gridTemplateColumns: `repeat(${points.length}, 1fr)`, gap: '0.3em', paddingTop: '0.35em', borderTop: '0.06em solid rgba(127,127,127,0.25)' }}>
         {points.map((p) => (
